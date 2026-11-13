@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#102a43">
+<title>Puguh Konstruksi — Project Management</title>
+<style>
+:root{--navy:#102a43;--navy2:#183b56;--blue:#2878b8;--teal:#0f9d91;--gold:#e8ad45;--bg:#f3f6fa;--card:#fff;--ink:#182b3a;--muted:#718096;--line:#e5ebf1;--red:#d9534f;--green:#20966d;--shadow:0 8px 28px #102a4310}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh}.sidebar{position:fixed;inset:0 auto 0 0;width:248px;background:linear-gradient(180deg,var(--navy),#0b2033);color:#fff;padding:22px 15px;z-index:5;display:flex;flex-direction:column;overflow-y:auto}.brand{display:flex;align-items:center;gap:11px;padding:0 9px 25px;border-bottom:1px solid #ffffff20}.brandmark{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,#e8ad45,#f4d38f);display:grid;place-items:center;color:#17334a;font-weight:900;font-size:19px;overflow:hidden}.brandmark img{width:100%;height:100%;object-fit:cover}.brand strong{display:block;font-size:15px;letter-spacing:.2px;line-height:1.2}.brand small{color:#a9bdcc;font-size:9px;letter-spacing:1.2px}.navlabel{color:#8199aa;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:20px 12px 8px}.nav button{width:100%;border:0;background:transparent;color:#c4d1dc;text-align:left;padding:10px 12px;border-radius:9px;margin:2px 0;display:flex;align-items:center;gap:12px;font-weight:550;font-size:13px}.nav button:hover,.nav button.active{background:#ffffff16;color:#fff}.nav button.active{box-shadow:inset 3px 0 var(--gold)}.nav button.locked{opacity:.45}.ico{width:20px;text-align:center;font-size:15px}.sidefoot{margin-top:auto;padding:15px 10px 5px;color:#9fb2c1;font-size:10px;border-top:1px solid #ffffff20;line-height:1.6}.sidefoot b{color:#e8ad45;font-weight:700}.main{margin-left:248px}.topbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 30px;position:sticky;top:0;z-index:4}.crumb{font-weight:700;font-size:16px}.crumb small{display:block;color:var(--muted);font-size:11px;font-weight:400}.top-actions{display:flex;align-items:center;gap:12px}.pill{background:#eef7f5;color:#16836e;border-radius:20px;padding:6px 10px;font-size:11px;font-weight:700}.avatar{width:35px;height:35px;border-radius:50%;background:#e8eef5;color:var(--navy);display:grid;place-items:center;font-weight:800;cursor:pointer}.companyline{display:flex;flex-direction:column;line-height:1.25}.companyline b{font-size:11px;color:var(--navy);letter-spacing:.3px}.companyline span{font-size:10px;color:var(--muted)}.content{padding:27px 30px 45px;max-width:1600px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:22px}.pagehead h1{font-size:24px;margin:0 0 4px;letter-spacing:-.5px}.pagehead p{color:var(--muted);margin:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:8px;padding:9px 13px;font-weight:650;font-size:12px;display:inline-flex;align-items:center;gap:6px}.btn.primary{background:var(--navy);color:#fff;border-color:var(--navy)}.btn.gold{background:var(--gold);border-color:var(--gold);color:#20364a}.btn.danger{color:var(--red)}.btn.success{background:var(--green);border-color:var(--green);color:#fff}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}.btn:disabled{opacity:.5;cursor:not-allowed}.btn[disabled]:hover{transform:none;filter:none}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:18px}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:13px;box-shadow:var(--shadow)}.stat{padding:18px 19px}.stathead{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;font-weight:600}.staticon{width:31px;height:31px;border-radius:99px;display:grid;place-items:center;background:#edf4fa;color:var(--blue)}.stat strong{display:block;font-size:25px;margin:12px 0 3px;letter-spacing:-.8px}.stat small{color:var(--muted);font-size:11px}.panels{grid-template-columns:1.45fr 1fr}.panel{padding:19px;margin-bottom:16px;min-width:0}.panelhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px;gap:10px}.panelhead h3{font-size:14px;margin:0}.muted{color:var(--muted)}.small{font-size:11px}.progress{height:7px;background:#edf1f5;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;background:var(--teal);border-radius:20px}.projectline{padding:12px 0;border-top:1px solid var(--line)}.projectline:first-of-type{border:0}.projecttop{display:flex;justify-content:space-between;gap:12px;margin-bottom:8px}.projecttop b{font-size:12px}.tag{display:inline-flex;padding:4px 8px;border-radius:20px;font-size:10px;font-weight:700;background:#edf5fb;color:#2878b8}.tag.green{background:#eaf7f1;color:#18845f}.tag.amber{background:#fff5e5;color:#a96d12}.tag.red{background:#fff0ef;color:#c44943}.tablewrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:650px}th{text-align:left;color:#7b8b99;font-size:10px;text-transform:uppercase;letter-spacing:.7px;padding:11px 10px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:12px 10px;border-bottom:1px solid #edf1f5;font-size:12px}tbody tr:hover{background:#fafcfe}.empty{text-align:center;color:var(--muted);padding:30px}.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:13px}.toolbar input,.toolbar select{max-width:240px}.field{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}.field label{font-size:11px;color:#526577;font-weight:700}.field input,.field select,.field textarea,.toolbar input,.toolbar select{width:100%;padding:9px 10px;border:1px solid #dce4eb;border-radius:7px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2878b815}.field textarea{min-height:75px;resize:vertical}.formgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 13px}.span2{grid-column:span 2}.modal{position:fixed;inset:0;background:#081b2bb0;z-index:20;display:none;align-items:center;justify-content:center;padding:18px}.modal.show{display:flex}.modalbox{width:min(650px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:14px;padding:22px;box-shadow:0 20px 70px #0004}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}.modalhead h2{font-size:18px;margin:0}.close{border:0;background:#f0f3f6;border-radius:7px;padding:6px 10px}.modalfoot{display:flex;justify-content:flex-end;gap:8px;margin-top:15px}.chartbox{height:245px;position:relative}.chartbox canvas{width:100%;height:100%}.gantt{overflow:auto}.gantt table{min-width:850px}.gantt td:first-child,.gantt th:first-child{position:sticky;left:0;background:#fff;z-index:1;min-width:210px}.ganttbar{height:17px;border-radius:5px;background:#2878b8;min-width:8px;position:relative}.ganttbar.critical{background:#d9534f}.ganttcell{background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),#edf1f5 calc(12.5% - 1px),#edf1f5 12.5%)}.kpi{display:flex;gap:12px;flex-wrap:wrap}.kpi>div{background:#f6f9fb;border-radius:9px;padding:12px 14px;flex:1;min-width:120px}.kpi strong{font-size:19px;display:block}.kpi small{color:var(--muted)}.notice{border:1px solid #f1dfb8;background:#fff9ed;padding:12px;border-radius:9px;color:#77571f;font-size:11px;margin-bottom:15px}.notice.green{border-color:#b8e6d4;background:#eefaf5;color:#1a6e52}.notice.red{border-color:#f1c0bd;background:#fff5f4;color:#a33b36}.notice.blue{border-color:#bcd8ee;background:#eff7fd;color:#1f5c87}.mobilemenu{display:none}.hidden{display:none!important}.footer{text-align:center;color:#9aa8b5;font-size:10px;padding:18px;line-height:1.6}.footer b{color:#6b7c8c}.upload-preview{width:56px;height:56px;border-radius:12px;border:1px dashed #cfd9e2;background:#f8fbfd;display:grid;place-items:center;color:#8b9aa8;font-size:10px;overflow:hidden}.upload-preview img{width:100%;height:100%;object-fit:cover}
+.loginpage{position:fixed;inset:0;z-index:100;background:linear-gradient(135deg,var(--navy) 0%,#0b2033 60%,#12344f 100%);display:flex;align-items:center;justify-content:center;padding:20px}.loginbox{width:min(420px,100%);background:#fff;border-radius:18px;padding:32px 30px;box-shadow:0 25px 80px #0006}.loginbrand{display:flex;align-items:center;gap:12px;margin-bottom:22px}.loginbrand .brandmark{width:48px;height:48px;font-size:22px}.loginbrand strong{display:block;font-size:16px;color:var(--navy)}.loginbrand small{font-size:10px;color:var(--muted);letter-spacing:1.2px}.loginbox h2{font-size:20px;margin:0 0 6px;color:var(--navy)}.loginbox p.sub{color:var(--muted);font-size:12px;margin:0 0 20px}.loginbox .field{margin-bottom:14px}.loginbox .btn{width:100%;justify-content:center;padding:11px;font-size:13px}.loginfoot{text-align:center;font-size:11px;color:var(--muted);margin-top:18px}.loginfoot a{color:var(--blue);font-weight:700;text-decoration:none;cursor:pointer}.loginerr{background:#fff0ef;color:#c44943;border:1px solid #f1c0bd;border-radius:8px;padding:9px 11px;font-size:11px;margin-bottom:14px;display:none}.loginerr.show{display:block}
+@media(max-width:1000px){.sidebar{width:215px}.main{margin-left:215px}.stats{grid-template-columns:repeat(2,1fr)}.panels{grid-template-columns:1fr}}
+@media(max-width:700px){.sidebar{transform:translateX(-100%);transition:.25s;width:265px}.sidebar.open{transform:translateX(0)}.main{margin-left:0}.topbar{height:62px;padding:0 15px}.mobilemenu{display:inline-flex}.content{padding:20px 14px 35px}.pagehead{flex-direction:column}.pagehead h1{font-size:21px}.stats{gap:10px}.stat{padding:13px}.stat strong{font-size:21px}.stathead{font-size:10px}.formgrid{grid-template-columns:1fr}.span2{grid-column:span 1}.top-actions .pill{display:none}.companyline{display:none}}
+@media print{@page{size:A4 portrait;margin:10mm}html,body{background:#fff!important;color:#000!important;width:100%!important;height:auto!important;overflow:visible!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.sidebar,.topbar .top-actions,.actions button,.toolbar,.notice,.footer,.modal,.mobilemenu,button,.loginpage,.readonly-banner{display:none!important}.main{margin-left:0!important;width:100%!important;display:block!important}.topbar{position:relative!important;height:auto!important;padding:0 0 10px 0!important;border-bottom:2px solid var(--navy)!important;margin-bottom:15px!important;display:block!important}.topbar::before{content:attr(data-company);font-weight:800;font-size:15px;color:var(--navy);display:block;margin-bottom:2px}.topbar::after{content:attr(data-company-detail);font-size:9px;color:#444;display:block;margin-bottom:8px}.crumb{font-size:13px!important}.content{padding:0!important;max-width:100%!important;width:100%!important}.pagehead h1{font-size:18px!important;margin-bottom:2px!important}.panel,.stat{box-shadow:none!important;border:1px solid #d0d7de!important;page-break-inside:avoid;break-inside:avoid;margin-bottom:12px!important}.grid{display:block!important}.stats{display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:8px!important;margin-bottom:12px!important}.panels{display:grid!important;grid-template-columns:1fr!important;gap:12px!important}.tablewrap{overflow:visible!important}table{width:100%!important;border-collapse:collapse!important;table-layout:auto!important;min-width:0!important}tr{page-break-inside:avoid;break-inside:avoid}th,td{border:1px solid #d0d7de!important;padding:5px 7px!important;font-size:10px!important}th{background-color:#f6f8fa!important;color:#000!important}.progress{border:1px solid #ccc}.chartbox{height:230px!important;page-break-inside:avoid;break-inside:avoid}.gantt{overflow:visible!important}.gantt table{min-width:0!important;width:100%!important}}
+</style>
+</head>
+<body>
+
+<div class="loginpage" id="loginPage">
+ <div class="loginbox">
+  <div class="loginbrand">
+   <div class="brandmark" id="loginBrandMark">PK</div>
+   <div><strong id="loginBrandName">PUGUH KONSTRUKSI</strong><small id="loginBrandTag">PROJECT MANAGEMENT</small></div>
+  </div>
+  <h2>Masuk ke Sistem</h2>
+  <p class="sub">Silakan login untuk mengakses fitur sesuai hak akses Anda.</p>
+  <div class="loginerr" id="loginErr">Email atau kata sandi salah.</div>
+  <div class="field"><label>Email</label><input id="loginEmail" type="email" placeholder="nama@perusahaan.co.id" autocomplete="username"></div>
+  <div class="field"><label>Kata Sandi</label><input id="loginPass" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"></div>
+  <button class="btn primary" onclick="doLogin()">🔐 Masuk</button>
+  <button class="btn" style="margin-top:8px" onclick="enterGuest()">👁️ Masuk sebagai Tamu (Lihat Saja)</button>
+  <div class="loginfoot">© 2026 <span id="loginFooterBrand">Puguh Konstruksi</span> · Sistem Manajemen Proyek</div>
+ </div>
+</div>
+
+<div class="app" id="appRoot" style="display:none">
+<aside class="sidebar" id="sidebar">
+ <div class="brand"><div class="brandmark" id="brandMark">PK</div><div><strong id="brandName">PUGUH KONSTRUKSI</strong><small id="brandTag">PROJECT MANAGEMENT</small></div></div>
+ <nav class="nav">
+  <div class="navlabel">WORKSPACE</div>
+  <button class="active" data-page="dashboard"><span class="ico">▦</span>Dashboard</button>
+  <button data-page="projects"><span class="ico">▣</span>Daftar Proyek</button>
+  <button data-page="schedule"><span class="ico">▤</span>WBS & Penjadwalan</button>
+  <button data-page="cost"><span class="ico">▥</span>RAB & AHSP</button>
+  <button data-page="field"><span class="ico">⌖</span>Laporan Lapangan</button>
+  <button data-page="documents"><span class="ico">▧</span>Dokumen & Approval</button>
+  <button data-page="issues"><span class="ico">⚑</span>Isu & Tindak Lanjut</button>
+  <div class="navlabel">ADMINISTRASI</div>
+  <button data-page="company" data-need="companyEdit"><span class="ico">🏢</span>Pengaturan Perusahaan</button>
+  <button data-page="team"><span class="ico">♙</span>Tim & Hak Akses</button>
+  <button data-page="admin" data-need="admin"><span class="ico">⚙</span>Menu Admin</button>
+  <button data-page="backup" data-need="backup"><span class="ico">💾</span>Backup & Restore</button>
+ </nav>
+ <div class="sidefoot"><b id="sideCompany">PT PUGUH KARYA NUSANTARA</b><br><span id="sideAddress">Jl. Raya Kaliurang KM 9 No. 88<br>Sleman, D.I. Yogyakarta 55581</span><br>Direktur: <span id="sideDirector">Ir. Puguh Santoso, M.T.</span><br>WhatsApp: <span id="sideWa">0812-3456-7890</span><br><span style="display:block;margin-top:6px;color:#8199aa">Puguh Konstruksi v1.2 · Server-backed</span></div>
+</aside>
+<main class="main">
+<header class="topbar" id="topbar" data-company="" data-company-detail="">
+ <div style="display:flex;align-items:center;gap:12px">
+  <button class="btn mobilemenu" id="menuBtn">☰</button>
+  <div class="crumb" id="crumb">Dashboard<small>Ringkasan operasional proyek Anda</small></div>
+ </div>
+ <div class="top-actions">
+  <div class="companyline">
+   <b id="topCompany">PT PUGUH KARYA NUSANTARA</b>
+   <span id="topCompanySub">Ir. Puguh Santoso, M.T. · WA 0812-3456-7890</span>
+  </div>
+  <button class="btn primary" onclick="printPDF()">🖨️ Cetak / Export PDF</button>
+  <span class="pill" id="rolePill">● Tamu</span>
+  <span class="muted small" id="today"></span>
+  <div class="avatar" id="topAvatar" onclick="openProfile()" title="Profil / Logout">?</div>
+ </div>
+</header>
+<div class="content" id="content"></div>
+<div class="footer" id="footer"><b id="footCompany">PT PUGUH KARYA NUSANTARA</b> · <span id="footAddress">Jl. Raya Kaliurang KM 9 No. 88, Sleman, D.I. Yogyakarta 55581</span> · Direktur Utama: <span id="footDirector">Ir. Puguh Santoso, M.T.</span> · WhatsApp: <span id="footWa">0812-3456-7890</span><br>© 2026 <span id="footBrand">Puguh Konstruksi</span> · Sistem Manajemen Proyek Konstruksi</div>
+</main></div>
+
+<div class="modal" id="modal"><div class="modalbox"><div class="modalhead"><h2 id="modalTitle">Tambah Data</h2><button class="close" onclick="closeModal()">✕</button></div><div id="modalBody"></div><div class="modalfoot"><button class="btn" onclick="closeModal()">Batal</button><button class="btn primary" id="modalSave">Simpan Data</button></div></div></div>
+<input type="file" id="restoreFile" accept=".json" style="display:none" onchange="processRestore(event)">
+<input type="file" id="logoFile" accept="image/*" style="display:none" onchange="onLogoPick(event)">
+
+<script>
+/* ================== API CLIENT ================== */
+const API = '/api';
+let TOKEN = localStorage.getItem('puguhToken') || '';
+function authHeaders(extra = {}) {
+  return { ...extra, ...(TOKEN ? { Authorization: 'Bearer ' + TOKEN } : {}) };
+}
+async function api(path, opts = {}) {
+  const res = await fetch(API + path, {
+    ...opts,
+    headers: authHeaders({ 'Content-Type': 'application/json', ...(opts.headers || {}) })
+  });
+  if (res.status === 401) {
+    localStorage.removeItem('puguhToken'); TOKEN = '';
+    location.reload(); throw new Error('Unauthorized');
+  }
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || 'API error ' + res.status);
+  }
+  return res.status === 204 ? null : res.json();
+}
+
+/* ================== HELPERS ================== */
+const $=s=>document.querySelector(s), money=n=>'Rp '+Number(n||0).toLocaleString('id-ID'), fmt=d=>d?new Date(d+'T00:00:00').toLocaleDateString('id-ID',{day:'2-digit',month:'short',year:'numeric'}):'-', today=(()=>{const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)})();
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+
+/* ================== ROLES ================== */
+const ROLES={
+ 'Admin Sistem':{create:true,edit:true,delete:true,backup:true,admin:true,companyEdit:true,approve:true,label:'Admin Sistem'},
+ 'Owner':{create:false,edit:false,delete:false,backup:true,admin:false,companyEdit:false,approve:true,label:'Owner'},
+ 'Konsultan MK':{create:true,edit:true,delete:false,backup:false,admin:false,companyEdit:false,approve:true,label:'Konsultan MK'},
+ 'Kontraktor Utama':{create:true,edit:true,delete:true,backup:false,admin:false,companyEdit:false,approve:false,label:'Kontraktor Utama'},
+ 'Sub-kontraktor':{create:true,edit:true,delete:false,backup:false,admin:false,companyEdit:false,approve:false,label:'Sub-kontraktor'},
+ 'Tamu':{create:false,edit:false,delete:false,backup:false,admin:false,companyEdit:false,approve:false,label:'Tamu (Read-only)'}
+};
+
+let users=[];
+let db={projects:[],tasks:[],costs:[],resources:[],reports:[],docs:[],issues:[],approvals:[]};
+let company={name:'',short:'',tag:'',address:'',city:'',phone:'',wa:'',email:'',website:'',director:'',npwp:'',nib:'',founded:'',logo:''};
+let session=null;
+
+async function loadAll(){
+  try{
+    const [c,p,t,co,r,rp,d,i,a] = await Promise.all([
+      api('/company'), api('/projects'), api('/tasks'), api('/costs'),
+      api('/resources'), api('/reports'), api('/docs'), api('/issues'), api('/approvals')
+    ]);
+    company=c;
+    db={projects:p,tasks:t,costs:co,resources:r,reports:rp,docs:d,issues:i,approvals:a};
+    if(can('admin')){ try{ users=await api('/users'); }catch(e){ users=[]; } }
+  }catch(e){ console.error('loadAll:',e); }
+}
+function loadSession(){try{session=JSON.parse(sessionStorage.getItem('puguhKonstruksiSession'))}catch(e){session=null}}
+function saveSession(){try{ if(session)sessionStorage.setItem('puguhKonstruksiSession',JSON.stringify(session));else sessionStorage.removeItem('puguhKonstruksiSession')}catch(e){}}
+function currentUser(){return session?users.find(u=>u.id===session.userId)||null:null}
+function currentRole(){return session?session.role:'Tamu'}
+function perms(role){return ROLES[role]||ROLES['Tamu']}
+function can(action){return !!perms(currentRole())[action]}
+function isLoggedIn(){return !!session && session.userId!=null}
+
+let page='dashboard',activeProject=1;
+function project(id){return db.projects.find(p=>p.id==id)}
+function totalBudget(){return db.projects.reduce((a,p)=>a+ +p.budget,0)}
+function totalActual(){return db.costs.reduce((a,c)=>a+ +c.actual,0)}
+function statusTag(s){let cl=s==='Selesai'?'green':s==='Tertunda'||s==='Ditolak'||s==='Kritis'?'red':s==='Menunggu'?'amber':'green';return `<span class="tag ${cl}">${s||'Berjalan'}</span>`}
+
+async function doLogin(){
+  const email=$('#loginEmail').value.trim();
+  const pass=$('#loginPass').value;
+  try{
+    const data=await api('/auth/login',{method:'POST',body:JSON.stringify({email,password:pass})});
+    TOKEN=data.token; localStorage.setItem('puguhToken',TOKEN);
+    session={userId:data.user.id,role:data.user.role,name:data.user.name,loginAt:new Date().toISOString()};
+    saveSession();
+    await loadAll();
+    enterApp();
+  }catch(e){ showLoginErr(e.message); }
+}
+function showLoginErr(msg){const e=$('#loginErr');e.textContent=msg;e.classList.add('show')}
+async function enterGuest(){
+  try{
+    const data=await api('/auth/guest',{method:'POST'});
+    TOKEN=data.token; localStorage.setItem('puguhToken',TOKEN);
+    session={userId:null,role:'Tamu',name:'Tamu',loginAt:new Date().toISOString()};
+    saveSession();
+    await loadAll();
+    enterApp();
+  }catch(e){ alert(e.message); }
+}
+function enterApp(){
+  $('#loginPage').style.display='none';
+  $('#appRoot').style.display='block';
+  $('#loginPass').value='';
+  applyCompany();applySessionUI();render();
+}
+function logout(){
+  if(!confirm('Yakin ingin keluar dari sistem?'))return;
+  TOKEN=''; localStorage.removeItem('puguhToken');
+  session=null;saveSession();
+  $('#appRoot').style.display='none';
+  $('#loginPage').style.display='flex';
+  applyCompany();
+}
+function openProfile(){
+ const u=currentUser();
+ modal('Profil Pengguna',`
+  <div class="kpi"><div><small>Nama</small><strong style="font-size:14px">${esc(u?.name||'Tamu')}</strong></div><div><small>Peran</small><strong style="font-size:14px">${esc(currentRole())}</strong></div></div>
+  <div class="projectline"><b>Email</b><div class="muted small">${esc(u?.email||'-')}</div></div>
+  <div class="projectline"><b>Status</b><div class="muted small">${esc(u?.status||'Guest')}</div></div>
+  <div class="projectline"><b>Hak Akses</b><div class="muted small">${describePerms()}</div></div>
+  ${isLoggedIn()?`<div class="notice red" style="margin-top:12px">Klik tombol di bawah untuk keluar dari sistem.</div>`:`<div class="notice blue" style="margin-top:12px">Anda masuk sebagai tamu. Login untuk mengakses fitur penuh.</div>`}
+ `,()=>{closeModal(); if(isLoggedIn())logout(); else { $('#loginPage').style.display='flex'; $('#appRoot').style.display='none'; } return true});
+ setTimeout(()=>{ $('#modalSave').textContent = isLoggedIn()?'🚪 Logout':'🔐 Ke Halaman Login'; },0);
+}
+function describePerms(){
+ const p=perms(currentRole());
+ const list=[];
+ if(p.create)list.push('Tambah');if(p.edit)list.push('Edit');if(p.delete)list.push('Hapus');if(p.approve)list.push('Approval');if(p.backup)list.push('Backup');if(p.admin)list.push('Admin');if(p.companyEdit)list.push('Perusahaan');
+ return list.length?list.join(' · '):'Hanya melihat (read-only)';
+}
+function applySessionUI(){
+ const u=currentUser(), role=currentRole(), p=perms(role);
+ const initials=(u?.name||'Tamu').replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()||'TM';
+ $('#topAvatar').textContent=initials;
+ const rp=$('#rolePill');
+ rp.textContent='● '+role;
+ rp.style.background= role==='Tamu'?'#fff5e5':'#eef7f5';
+ rp.style.color= role==='Tamu'?'#a96d12':'#16836e';
+ document.querySelectorAll('.nav button[data-need]').forEach(b=>{
+   const need=b.dataset.need;
+   const ok=!!p[need];
+   b.classList.toggle('locked',!ok);
+   b.title=ok?'':'Perlu hak akses khusus';
+ });
+}
+function guardedButton(label,onclick,action,cls='btn primary'){
+ const ok=can(action);
+ return `<button class="${cls}" ${ok?`onclick="${onclick}"`:'disabled title="Perlu hak akses"'}>${label}</button>`;
+}
+function head(title,desc,buttons=''){return `<div class="pagehead"><div><h1>${title}</h1><p>${desc}</p></div><div class="actions"><button class="btn primary" onclick="printPDF()">🖨️ Cetak PDF</button>${buttons}</div></div>`}
+function stat(label,value,note,icon){return `<div class="stat"><div class="stathead">${label}<span class="staticon">${icon}</span></div><strong>${value}</strong><small>${note}</small></div>`}
+
+function render(){
+ if(!session){$('#loginPage').style.display='flex';$('#appRoot').style.display='none';return}
+ $('#loginPage').style.display='none';$('#appRoot').style.display='block';
+ applySessionUI();
+ let titles={dashboard:'Dashboard',projects:'Daftar Proyek',schedule:'WBS & Penjadwalan',cost:'RAB & AHSP',field:'Laporan Lapangan',documents:'Dokumen & Approval',issues:'Isu & Tindak Lanjut',company:'Pengaturan Perusahaan',team:'Tim & Hak Akses',admin:'Menu Admin',backup:'Backup & Restore Data'};
+ let subs={dashboard:'Ringkasan operasional proyek Anda',company:'Ubah identitas perusahaan',admin:'Pusat administrasi sistem',team:'Kelola personel dan hak akses',backup:'Cadangkan atau pulihkan data'};
+ const p=perms(currentRole());
+ if((page==='admin'&&!p.admin)||(page==='backup'&&!p.backup)||(page==='company'&&!p.companyEdit)){
+   $('#content').innerHTML=`<div class="panel"><div class="notice red">Anda tidak memiliki hak akses untuk halaman ini.</div></div>`;return;
+ }
+ $('#crumb').innerHTML=`${titles[page]}<small>${subs[page]||'Kelola data dan aktivitas konstruksi'}</small>`;
+ const banners=[];
+ if(!isLoggedIn())banners.push(`<div class="readonly-banner notice blue">👁️ Anda masuk sebagai <b>Tamu</b>. Anda hanya dapat melihat data. <a href="#" onclick="logout();return false" style="color:#1f5c87;font-weight:700">Masuk</a> untuk mengakses fitur.</div>`);
+ else banners.push(`<div class="readonly-banner notice green">✅ Login sebagai <b>${esc(currentUser()?.name||'-')}</b> (${esc(currentRole())}). Hak: ${describePerms()}.</div>`);
+ $('#content').innerHTML=banners.join('')+({dashboard:dashboard,projects:projectsPage,schedule:schedulePage,cost:costPage,field:fieldPage,documents:documentsPage,issues:issuesPage,company:companyPage,team:teamPage,admin:adminPage,backup:backupPage}[page])();
+ if(page==='dashboard'||page==='field')drawCurve();
+}
+
+function dashboard(){let actualProgress=db.projects.length?Math.round(db.projects.reduce((a,p)=>a+ +p.progress,0)/db.projects.length):0;let actual=totalActual(),budget=totalBudget();return `${head('Selamat datang di '+(company.short||'Puguh Konstruksi'),'Pantau kinerja, biaya, jadwal, dan aktivitas seluruh proyek.',guardedButton('＋ Proyek Baru','openProject()','create'))}
+<div class="grid stats">${stat('Total Proyek',db.projects.length,'Seluruh proyek terdaftar','▣')}${stat('Rata-rata Progres',actualProgress+'%','Progres fisik rata-rata','↗')}${stat('Total Nilai RAB',money(budget),'Nilai anggaran proyek','▥')}${stat('Biaya Aktual',money(actual),'Realisasi biaya tercatat','◈')}</div>
+<div class="grid panels"><section class="panel"><div class="panelhead"><h3>Progres Proyek</h3><span class="muted small">Status terkini</span></div>${db.projects.map(p=>`<div class="projectline"><div class="projecttop"><div><b>${esc(p.name)}</b><div class="muted small">${esc(p.client)} · ${esc(p.location)}</div></div><b>${p.progress}%</b></div><div class="progress"><span style="width:${p.progress}%"></span></div><div class="muted small" style="margin-top:7px">${fmt(p.start)} — ${fmt(p.end)} &nbsp; ${statusTag(p.status)}</div></div>`).join('')||'<div class="empty">Belum ada proyek.</div>'}</section>
+<section class="panel"><div class="panelhead"><h3>Ringkasan Pengendalian Biaya</h3><span class="tag">Portfolio</span></div><div class="kpi"><div><small>Anggaran</small><strong>${money(budget)}</strong></div><div><small>Aktual</small><strong>${money(actual)}</strong></div></div><div style="margin:18px 0 8px;display:flex;justify-content:space-between"><span class="muted small">Serapan anggaran</span><b>${budget?Math.round(actual/budget*100):0}%</b></div><div class="progress"><span style="width:${budget?Math.min(100,actual/budget*100):0}%;background:var(--gold)"></span></div><div class="notice" style="margin-top:18px">Catatan: nilai biaya aktual merupakan penjumlahan item biaya yang sudah Anda catat pada modul RAB & AHSP.</div><h3 style="font-size:13px;margin:0 0 10px">Aktivitas terbaru</h3>${db.reports.slice(-3).reverse().map(r=>`<div class="projectline"><b>${esc(r.work)}</b><div class="muted small">${fmt(r.date)} · ${esc(r.projectName||'Proyek')}</div></div>`).join('')||'<div class="muted small">Belum ada laporan lapangan.</div>'}</section></div>
+<section class="panel"><div class="panelhead"><h3>Kurva-S Progres</h3><span class="muted small">Rencana vs aktual (indikatif)</span></div><div class="chartbox"><canvas id="curve"></canvas></div></section>`}
+
+function projectsPage(){
+ const b=[`<button class="btn" onclick="exportCSV('projects')">↓ Export CSV</button>`,guardedButton('＋ Tambah Proyek','openProject()','create')];
+ return `${head('Daftar Proyek','Buat dan kelola portofolio proyek konstruksi.',b.join(''))}<div class="panel"><div class="toolbar"><input id="projectSearch" placeholder="Cari nama proyek / klien..." oninput="filterTable('projectTable',this.value)"><select onchange="filterStatus(this.value,'projectTable')"><option value="">Semua status</option><option>Berjalan</option><option>Persiapan</option><option>Selesai</option><option>Tertunda</option></select></div><div class="tablewrap"><table id="projectTable"><thead><tr><th>Nama Proyek</th><th>Klien / Owner</th><th>Lokasi</th><th>Periode</th><th>Nilai RAB</th><th>Progres</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${db.projects.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.client)}</td><td>${esc(p.location)}</td><td>${fmt(p.start)}<br>${fmt(p.end)}</td><td>${money(p.budget)}</td><td>${p.progress}%<div class="progress" style="width:90px"><span style="width:${p.progress}%"></span></div></td><td>${statusTag(p.status)}</td><td>${can('edit')?`<button class="btn" onclick="editProject(${p.id})">Edit</button>`:''} ${can('delete')?`<button class="btn danger" onclick="del('projects',${p.id})">Hapus</button>`:''}${!can('edit')&&!can('delete')?'<span class="muted small">Lihat saja</span>':''}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">Belum ada proyek.</td></tr>'}</tbody></table></div></div>`}
+
+function schedulePage(){let tasks=db.tasks.filter(t=>t.project==activeProject),p=project(activeProject);const b=[guardedButton('＋ Tambah Aktivitas','openTask()','create')];return `${head('WBS & Penjadwalan','Susun paket pekerjaan, durasi, ketergantungan, dan alokasi sumber daya.',b.join(''))}<div class="toolbar"><select onchange="activeProject=+this.value;render()">${db.projects.map(p=>`<option value="${p.id}" ${p.id===activeProject?'selected':''}>${esc(p.name)}</option>`).join('')}</select><button class="btn" onclick="exportCSV('tasks')">↓ Export WBS</button></div><div class="panel"><div class="panelhead"><h3>Work Breakdown Structure</h3><span class="tag">${tasks.length} aktivitas</span></div><div class="tablewrap"><table><thead><tr><th>Aktivitas</th><th>Mulai</th><th>Selesai</th><th>Durasi</th><th>Bobot</th><th>Progres</th><th>Predecessor</th><th>Sumber Daya</th><th>Jalur</th><th>Aksi</th></tr></thead><tbody>${tasks.map(t=>`<tr><td><b>${esc(t.name)}</b></td><td>${fmt(t.start)}</td><td>${fmt(t.end)}</td><td>${Math.max(1,Math.ceil((new Date(t.end)-new Date(t.start))/86400000)+1)} hari</td><td>${t.weight}%</td><td>${t.progress}%</td><td>${t.pred||'-'}</td><td>${esc(t.resource)}</td><td>${t.critical?'<span class="tag red">Kritis*</span>':'-'}</td><td>${can('edit')?`<button class="btn" onclick="editTask(${t.id})">Edit</button>`:''} ${can('delete')?`<button class="btn danger" onclick="del('tasks',${t.id})">×</button>`:''}${!can('edit')&&!can('delete')?'<span class="muted small">Lihat saja</span>':''}</td></tr>`).join('')||'<tr><td colspan="10" class="empty">Belum ada aktivitas WBS.</td></tr>'}</tbody></table></div><p class="muted small">* Penanda jalur kritis diisi manual sebagai alat bantu.</p></div><div class="panel"><div class="panelhead"><h3>Gantt Chart</h3><span class="muted small">Rentang proyek terpilih</span></div><div class="gantt"><table><tbody>${tasks.map(t=>{let min=new Date(p?.start||t.start),max=new Date(p?.end||t.end),s=new Date(t.start),e=new Date(t.end),range=Math.max(1,max-min),left=Math.max(0,(s-min)/range*100),width=Math.max(1,(e-s)/range*100);return `<tr><td>${esc(t.name)}</td><td class="ganttcell" style="width:70%"><div class="ganttbar ${t.critical?'critical':''}" title="${fmt(t.start)} – ${fmt(t.end)}" style="margin-left:${left}%;width:${Math.min(width,100-left)}%"></div></td></tr>`}).join('')||'<tr><td class="empty">Belum ada data.</td></tr>'}</tbody></table></div></div><div class="panel"><div class="panelhead"><h3>Resource Allocation</h3>${guardedButton('＋ Sumber Daya','openResource()','create','btn')}</div>${db.resources.map(r=>`<div class="projectline"><div class="projecttop"><b>${esc(r.name)} <span class="muted">· ${r.type}</span></b><span>${r.capacity} ${r.unit}</span></div><div class="muted small">Alokasi dicatat per aktivitas pada kolom sumber daya.</div></div>`).join('')||'<div class="empty">Belum ada sumber daya.</div>'}</div>`}
+
+function costPage(){let costs=db.costs.filter(c=>c.project==activeProject),p=project(activeProject),budget=costs.reduce((a,c)=>a+c.volume*c.price,0),actual=costs.reduce((a,c)=>a+c.actual,0),earned=budget*(p?.progress||0)/100;let cpi=actual?earned/actual:0;const b=[`<button class="btn" onclick="exportCSV('costs')">↓ Export CSV</button>`,guardedButton('＋ Tambah Item RAB','openCost()','create')];return `${head('RAB, AHSP & Cost Control','Kelola analisa harga satuan, anggaran item, dan realisasi biaya.',b.join(''))}<div class="toolbar"><select onchange="activeProject=+this.value;render()">${db.projects.map(p=>`<option value="${p.id}" ${p.id===activeProject?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div><div class="grid stats">${stat('Nilai RAB',money(budget),'Jumlah volume × harga satuan','▥')}${stat('Biaya Aktual',money(actual),'Biaya yang telah direalisasikan','◈')}${stat('Varians',money(budget-actual),'RAB dikurangi aktual','↕')}${stat('CPI',cpi.toFixed(2),'EV / AC · indikatif','◎')}</div><div class="panel"><div class="panelhead"><h3>Daftar RAB & AHSP</h3><span class="muted small">Proyek: ${esc(p?.name||'-')}</span></div><div class="tablewrap"><table><thead><tr><th>Uraian Pekerjaan</th><th>Volume</th><th>Satuan</th><th>Harga Satuan</th><th>Nilai RAB</th><th>Aktual</th><th>Deviasi</th><th>Aksi</th></tr></thead><tbody>${costs.map(c=>`<tr><td><b>${esc(c.item)}</b></td><td>${c.volume}</td><td>${esc(c.unit)}</td><td>${money(c.price)}</td><td>${money(c.volume*c.price)}</td><td>${money(c.actual)}</td><td>${money(c.volume*c.price-c.actual)}</td><td>${can('edit')?`<button class="btn" onclick="editCost(${c.id})">Edit</button>`:''} ${can('delete')?`<button class="btn danger" onclick="del('costs',${c.id})">×</button>`:''}${!can('edit')&&!can('delete')?'<span class="muted small">Lihat saja</span>':''}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">Belum ada item RAB.</td></tr>'}</tbody></table></div></div><div class="grid panels"><div class="panel"><h3 style="margin-top:0">Earned Value Management</h3><div class="kpi"><div><small>Planned Value (PV)*</small><strong>${money(budget*(p?.progress||0)/100)}</strong></div><div><small>Earned Value (EV)*</small><strong>${money(earned)}</strong></div><div><small>Actual Cost (AC)</small><strong>${money(actual)}</strong></div></div><p class="muted small">CPI: ${cpi.toFixed(2)}.</p></div><div class="panel"><h3 style="margin-top:0">Termin, Retensi & WIP</h3><div class="notice">Pencatatan termin/retensi detail dapat ditambahkan sebagai transaksi pada versi backend.</div><b>Estimasi nilai pekerjaan berjalan (WIP)</b><h2>${money(earned-actual)}</h2><span class="muted small">EV dikurangi biaya aktual</span></div></div>`}
+
+function fieldPage(){const b=[`<button class="btn" onclick="exportCSV('reports')">↓ Export CSV</button>`,guardedButton('＋ Laporan Harian','openReport()','create')];return `${head('Laporan Lapangan','Catat aktivitas harian, cuaca, tenaga kerja, material, dan dokumentasi proyek.',b.join(''))}<div class="panel"><div class="panelhead"><h3>Kurva-S Progres Proyek</h3><span class="tag">Rencana vs Aktual</span></div><div class="chartbox"><canvas id="curve"></canvas></div></div><div class="panel"><div class="panelhead"><h3>Log Laporan Harian</h3><span class="muted small">${db.reports.length} laporan</span></div><div class="tablewrap"><table><thead><tr><th>Tanggal</th><th>Proyek</th><th>Pekerjaan</th><th>Tenaga Kerja</th><th>Material Masuk</th><th>Cuaca</th><th>Progres</th><th>Dokumentasi</th></tr></thead><tbody>${db.reports.slice().reverse().map(r=>`<tr><td>${fmt(r.date)}</td><td>${esc(r.projectName)}</td><td>${esc(r.work)}</td><td>${esc(r.workers)}</td><td>${esc(r.material||'-')}</td><td>${esc(r.weather)}</td><td>${r.progress}%</td><td>${r.photo?'Tersimpan':'-'}</td></tr>`).join('')||'<tr><td colspan="8" class="empty">Belum ada laporan harian.</td></tr>'}</tbody></table></div></div>`}
+
+function documentsPage(){const b=[guardedButton('＋ Tambah Dokumen','openDoc()','create')];return `${head('Dokumen & Approval','Register kontrak, gambar kerja, berita acara, dan alur persetujuan.',b.join(''))}<div class="panel"><div class="panelhead"><h3>Register Dokumen</h3><button class="btn" onclick="exportCSV('docs')">↓ Export CSV</button></div><div class="tablewrap"><table><thead><tr><th>Nomor / Judul</th><th>Proyek</th><th>Kategori</th><th>Versi</th><th>Tanggal</th><th>Penanggung Jawab</th><th>Status Approval</th></tr></thead><tbody>${db.docs.map(d=>`<tr><td><b>${esc(d.title)}</b><div class="muted small">${esc(d.number)}</div></td><td>${esc(project(d.project)?.name||'-')}</td><td>${esc(d.category)}</td><td>v${d.version}</td><td>${fmt(d.date)}</td><td>${esc(d.owner)}</td><td>${statusTag(d.status)}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Belum ada dokumen.</td></tr>'}</tbody></table></div></div><div class="panel"><div class="panelhead"><h3>Alur Persetujuan</h3><span class="muted small">Kontraktor → Konsultan MK → Owner</span></div>${db.approvals.map(a=>`<div class="projectline"><b>${esc(a.title)}</b><div class="muted small">${esc(a.step)} · ${fmt(a.date)} · ${statusTag(a.status)}</div></div>`).join('')||'<div class="empty">Belum ada pengajuan approval.</div>'}${guardedButton('＋ Buat Pengajuan Approval','openApproval()','approve','btn')}</div>`}
+
+function issuesPage(){const b=[guardedButton('＋ Catat Isu','openIssue()','create')];return `${head('Isu & Tindak Lanjut','Catat kendala lapangan, PIC, prioritas, dan status penyelesaian.',b.join(''))}<div class="panel"><div class="tablewrap"><table><thead><tr><th>Isu</th><th>Proyek</th><th>Prioritas</th><th>PIC</th><th>Target</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${db.issues.map(i=>`<tr><td><b>${esc(i.title)}</b><div class="muted small">${esc(i.detail)}</div></td><td>${esc(project(i.project)?.name||'-')}</td><td>${statusTag(i.priority)}</td><td>${esc(i.pic)}</td><td>${fmt(i.due)}</td><td>${statusTag(i.status)}</td><td>${can('edit')?`<button class="btn" onclick="cycleIssue(${i.id})">Ubah Status</button>`:''} ${can('delete')?`<button class="btn danger" onclick="del('issues',${i.id})">×</button>`:''}${!can('edit')&&!can('delete')?'<span class="muted small">Lihat saja</span>':''}</td></tr>`).join('')||'<tr><td colspan="7" class="empty">Tidak ada isu tercatat.</td></tr>'}</tbody></table></div></div>`}
+
+function companyPage(){
+ const c=company, isEditable=can('companyEdit');
+ return `${head('Pengaturan Perusahaan','Ubah identitas perusahaan yang ditampilkan di seluruh sistem dan kop cetak PDF.',isEditable?'':'')}
+ ${isEditable?'':'<div class="notice red">Anda tidak memiliki hak untuk mengubah pengaturan perusahaan. Hanya dapat melihat.</div>'}
+ <div class="notice green">Perubahan akan langsung diterapkan pada sidebar, topbar, footer, dan kop cetak/print PDF setelah disimpan.</div>
+ <div class="grid panels">
+  <div class="panel">
+   <div class="panelhead"><h3>Identitas Perusahaan</h3><span class="tag">Wajib</span></div>
+   <div class="formgrid">
+    <div class="field span2"><label>Nama Perusahaan (legal)</label><input id="c_name" value="${esc(c.name)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Nama Singkat / Brand</label><input id="c_short" value="${esc(c.short)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Tagline</label><input id="c_tag" value="${esc(c.tag)}" ${isEditable?'':'readonly'}></div>
+    <div class="field span2"><label>Alamat Lengkap</label><textarea id="c_address" ${isEditable?'':'readonly'}>${esc(c.address)}</textarea></div>
+    <div class="field"><label>Kota / Wilayah</label><input id="c_city" value="${esc(c.city)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Telepon Kantor</label><input id="c_phone" value="${esc(c.phone)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Nomor WhatsApp</label><input id="c_wa" value="${esc(c.wa)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Email</label><input id="c_email" value="${esc(c.email)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Website</label><input id="c_website" value="${esc(c.website)}" ${isEditable?'':'readonly'}></div>
+    <div class="field span2"><label>Nama Direktur Utama</label><input id="c_director" value="${esc(c.director)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>NPWP</label><input id="c_npwp" value="${esc(c.npwp)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>NIB</label><input id="c_nib" value="${esc(c.nib)}" ${isEditable?'':'readonly'}></div>
+    <div class="field"><label>Tahun Berdiri</label><input id="c_founded" value="${esc(c.founded)}" ${isEditable?'':'readonly'}></div>
+   </div>
+   ${isEditable?`<div style="display:flex;gap:8px;justify-content:flex-end;margin-top:8px"><button class="btn" onclick="render()">Batal</button><button class="btn primary" onclick="saveCompanyForm()">💾 Simpan Perubahan</button></div>`:''}
+  </div>
+  <div class="panel">
+   <div class="panelhead"><h3>Logo Perusahaan</h3></div>
+   <div style="display:flex;gap:14px;align-items:center;margin-bottom:12px">
+    <div class="upload-preview" id="logoPreview">${c.logo?`<img src="${c.logo}" alt="logo">`:'No Logo'}</div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+     ${isEditable?`<button class="btn" onclick="$('#logoFile').click()">📤 Unggah Logo</button>`:''}
+     ${isEditable&&c.logo?'<button class="btn danger" onclick="removeLogo()">Hapus Logo</button>':''}
+    </div>
+   </div>
+   <div class="panelhead" style="margin-top:15px"><h3>Pratinjau Kop Cetak</h3></div>
+   <div style="border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfdff">
+     <div style="font-weight:800;font-size:13px;color:var(--navy)">${esc(c.name)}</div>
+     <div style="font-size:10px;color:#555;margin-top:2px">${esc(c.address)}</div>
+     <div style="font-size:10px;color:#555">Direktur Utama: ${esc(c.director)} · WA: ${esc(c.wa)} · ${esc(c.phone)}</div>
+   </div>
+  </div>
+ </div>`;
+}
+async function saveCompanyForm(){
+ if(!can('companyEdit'))return alert('Tidak diizinkan.');
+ const g=id=>document.getElementById(id).value.trim();
+ const payload={name:g('c_name'),short:g('c_short'),tag:g('c_tag'),address:g('c_address'),city:g('c_city'),phone:g('c_phone'),wa:g('c_wa'),email:g('c_email'),website:g('c_website'),director:g('c_director'),npwp:g('c_npwp'),nib:g('c_nib'),founded:g('c_founded')};
+ if(!payload.name)return alert('Nama perusahaan wajib diisi.');
+ try{ company=await api('/company',{method:'PUT',body:JSON.stringify(payload)}); applyCompany(); render(); alert('Data perusahaan tersimpan.'); }
+ catch(e){ alert(e.message); }
+}
+function onLogoPick(e){
+ if(!can('companyEdit'))return;
+ const f=e.target.files[0];if(!f)return;
+ if(f.size>350000)return alert('Logo terlalu besar (≤ 350 KB).'),e.target.value='';
+ const rd=new FileReader();
+ rd.onload=async()=>{
+   try{
+     company=await api('/company',{method:'PUT',body:JSON.stringify({logo:rd.result})});
+     applyCompany();
+     const pv=$('#logoPreview');if(pv)pv.innerHTML=`<img src="${company.logo}" alt="logo">`;
+     alert('Logo diperbarui.');
+   }catch(err){ alert(err.message); }
+ };
+ rd.readAsDataURL(f);e.target.value='';
+}
+async function removeLogo(){
+ if(!can('companyEdit'))return;
+ if(!confirm('Hapus logo perusahaan?'))return;
+ try{ company=await api('/company',{method:'PUT',body:JSON.stringify({logo:''})}); applyCompany(); render(); }
+ catch(e){ alert(e.message); }
+}
+
+function teamPage(){return `${head('Tim & Hak Akses','Daftar pengguna sistem, peran, dan hak akses.','')}
+ <div class="panel"><div class="panelhead"><h3>Daftar Pengguna</h3>${can('admin')?'<span class="tag">Admin</span>':''}</div><div class="tablewrap"><table><thead><tr><th>Nama</th><th>Email</th><th>Peran</th><th>Status</th><th>Akses</th></tr></thead><tbody>${(users.length?users:[{name:'(login admin untuk lihat)',email:'-',role:'-',status:'-'}]).map(u=>`<tr><td><b>${esc(u.name)}</b></td><td>${esc(u.email)}</td><td>${esc(u.role)}</td><td>${statusTag(u.status)}</td><td class="muted small">${u.role!=='-'?describePermsByRole(u.role):'-'}</td></tr>`).join('')}</tbody></table></div></div>
+ <div class="panel"><div class="panelhead"><h3>Daftar Sumber Daya</h3>${guardedButton('＋ Tambah Personel / Alat','openResource()','create','btn primary')}</div><div class="tablewrap"><table><thead><tr><th>Nama</th><th>Jenis</th><th>Kapasitas</th><th>Satuan</th><th>Aksi</th></tr></thead><tbody>${db.resources.map(r=>`<tr><td>${esc(r.name)}</td><td>${esc(r.type)}</td><td>${r.capacity}</td><td>${esc(r.unit)}</td><td>${can('delete')?`<button class="btn danger" onclick="del('resources',${r.id})">Hapus</button>`:'<span class="muted small">-</span>'}</td></tr>`).join('')||'<tr><td colspan="5" class="empty">Belum ada sumber daya.</td></tr>'}</tbody></table></div></div>`}
+function describePermsByRole(role){const p=ROLES[role]||{};const list=[];if(p.create)list.push('C');if(p.edit)list.push('E');if(p.delete)list.push('D');if(p.approve)list.push('A');if(p.backup)list.push('B');if(p.admin)list.push('Adm');if(p.companyEdit)list.push('Co');return list.join(' / ')||'Read-only'}
+
+function adminPage(){
+ const totalRecords=db.projects.length+db.tasks.length+db.costs.length+db.reports.length+db.docs.length+db.issues.length;
+ const jsonSize=(new Blob([JSON.stringify({db,company,users})]).size/1024).toFixed(1);
+ if(!can('admin'))return `<div class="panel"><div class="notice red">Anda tidak memiliki hak akses ke Menu Admin.</div></div>`;
+ return `${head('Menu Admin','Pusat administrasi sistem: pengguna, master data, audit, dan pemeliharaan.')}
+ <div class="grid stats">${stat('Total Record',totalRecords+' item','Seluruh entitas data','🗂️')}${stat('Ukuran Data',jsonSize+' KB','DB + pengaturan + pengguna','📊')}${stat('Pengguna',users.length,'Akun terdaftar','👤')}${stat('Sesi Aktif',currentUser()?.name||'Tamu','Pengguna saat ini','🔑')}</div>
+ <div class="grid panels">
+  <div class="panel"><div class="panelhead"><h3>👤 Manajemen Pengguna</h3><span class="tag">Admin</span></div>
+   <div class="tablewrap"><table><thead><tr><th>Nama</th><th>Email</th><th>Peran</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${users.map(u=>`<tr><td><b>${esc(u.name)}</b></td><td>${esc(u.email)}</td><td>${esc(u.role)}</td><td>${statusTag(u.status)}</td><td><button class="btn" onclick="openUser(${u.id})">Edit</button> ${u.id!==session?.userId?`<button class="btn danger" onclick="delUser(${u.id})">Hapus</button>`:''}</td></tr>`).join('')}</tbody></table></div>
+   <div style="margin-top:10px"><button class="btn primary" onclick="openUser()">＋ Tambah Pengguna</button></div>
+  </div>
+  <div class="panel"><div class="panelhead"><h3>🔐 Ringkasan Peran</h3></div>
+   ${Object.keys(ROLES).map(r=>`<div class="projectline"><div class="projecttop"><b>${esc(r)}</b><span class="tag">${users.filter(u=>u.role===r).length} pengguna</span></div><div class="muted small">${describePermsByRole(r)}</div></div>`).join('')}
+  </div>
+ </div>
+ <div class="grid panels">
+  <div class="panel"><div class="panelhead"><h3>🗂️ Master Data</h3></div><div class="tablewrap"><table><thead><tr><th>Kategori</th><th>Jumlah</th><th>Aksi</th></tr></thead><tbody>
+   <tr><td>Proyek</td><td>${db.projects.length}</td><td><button class="btn" onclick="setPage('projects')">Kelola</button></td></tr>
+   <tr><td>Aktivitas WBS</td><td>${db.tasks.length}</td><td><button class="btn" onclick="setPage('schedule')">Kelola</button></td></tr>
+   <tr><td>Item RAB</td><td>${db.costs.length}</td><td><button class="btn" onclick="setPage('cost')">Kelola</button></td></tr>
+   <tr><td>Sumber Daya</td><td>${db.resources.length}</td><td><button class="btn" onclick="setPage('team')">Kelola</button></td></tr>
+  </tbody></table></div></div>
+  <div class="panel"><div class="panelhead"><h3>🔧 Pemeliharaan</h3></div>
+   <div class="projectline"><b>Export Backup</b><div class="muted small">Unduh database + pengaturan.</div><button class="btn" onclick="exportBackup()">Export JSON</button></div>
+  </div>
+ </div>`;
+}
+function openUser(id){
+ if(!can('admin'))return alert('Hanya admin.');
+ const u=id?users.find(x=>x.id===id):null;
+ modal(u?'Edit Pengguna':'Tambah Pengguna',`<div class="formgrid">
+  ${f('u_name','Nama Lengkap','text',u?.name||'')}
+  ${f('u_email','Email','email',u?.email||'')}
+  ${f('u_password','Kata Sandi (kosongkan jika tak diubah)','text','')}
+  ${sel('u_role','Peran',Object.keys(ROLES),u?.role||'Kontraktor Utama')}
+  ${sel('u_status','Status',['Aktif','Menunggu','Nonaktif'],u?.status||'Aktif')}
+ </div>`,async()=>{
+  const payload={name:val('u_name').trim(),email:val('u_email').trim(),role:val('u_role'),status:val('u_status')};
+  if(!payload.name||!payload.email)return alert('Nama & email wajib.'),false;
+  if(val('u_password'))payload.password=val('u_password');
+  else if(!u)return alert('Password wajib untuk user baru.'),false;
+  try{
+    if(u) await api('/users/'+u.id,{method:'PUT',body:JSON.stringify(payload)});
+    else await api('/users',{method:'POST',body:JSON.stringify(payload)});
+    users=await api('/users'); render(); return true;
+  }catch(e){ alert(e.message); return false; }
+ });
+}
+async function delUser(id){
+ if(!can('admin'))return;
+ if(id===session?.userId)return alert('Tidak bisa hapus diri sendiri.');
+ if(!confirm('Hapus pengguna ini?'))return;
+ try{ await api('/users/'+id,{method:'DELETE'}); users=await api('/users'); render(); }
+ catch(e){ alert(e.message); }
+}
+
+function backupPage(){
+ if(!can('backup'))return `<div class="panel"><div class="notice red">Anda tidak memiliki hak mengakses Backup & Restore.</div></div>`;
+ let totalRecords=db.projects.length+db.tasks.length+db.costs.length+db.reports.length+db.docs.length+db.issues.length;
+ let jsonSize=(new Blob([JSON.stringify({db,company,users})]).size/1024).toFixed(1);
+ return `${head('Backup & Restore Data','Unduh cadangan data sistem atau pulihkan dari file backup sebelumnya.')}
+ <div class="grid stats">${stat('Total Record',totalRecords+' item','Seluruh entitas tersimpan','💾')}${stat('Ukuran Database',jsonSize+' KB','DB + pengaturan + pengguna','📊')}${stat('Total Proyek',db.projects.length,'Proyek aktif & selesai','▣')}${stat('Pengguna',users.length,'Akun terdaftar','👤')}</div>
+ <div class="grid panels">
+  <div class="panel"><div class="panelhead"><h3>📥 Cadangkan Data</h3><span class="tag green">Rekomendasi</span></div><p class="muted">Unduh database, pengaturan perusahaan, dan daftar pengguna ke file .json.</p><button class="btn primary" onclick="exportBackup()">📥 Download Backup (.json)</button></div>
+  <div class="panel"><div class="panelhead"><h3>📤 Pulihkan Data</h3><span class="tag amber">Perhatian</span></div><p class="muted">Unggah file .json hasil backup untuk memulihkan seluruh data.</p><button class="btn gold" onclick="$('#restoreFile').click()">📤 Upload & Restore</button></div>
+ </div>`;
+}
+async function exportBackup(){
+ if(!can('backup'))return alert('Tidak diizinkan.');
+ const res=await fetch(API+'/backup/export',{headers:authHeaders()});
+ if(!res.ok)return alert('Gagal export');
+ const blob=await res.blob();
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`puguh-konstruksi-backup-${today}.json`;a.click();
+}
+async function processRestore(event){
+ if(!can('backup'))return alert('Tidak diizinkan.');
+ const file=event.target.files[0];if(!file)return;
+ const rd=new FileReader();
+ rd.onload=async e=>{
+  try{
+   const payload=JSON.parse(e.target.result);
+   if(!confirm('Yakin restore? Data saat ini akan diganti.'))return;
+   await api('/backup/restore',{method:'POST',body:JSON.stringify(payload)});
+   await loadAll(); alert('Restore berhasil!'); render();
+  }catch(err){ alert('Restore gagal: '+err.message); }
+ };
+ rd.readAsText(file); event.target.value='';
+}
+
+function applyCompany(){
+ const c=company;
+ const initials=(c.short||c.name||'PK').replace(/[^A-Za-z0-9]/g,'').slice(0,2).toUpperCase()||'PK';
+ const logoHTML=c.logo?`<img src="${c.logo}" alt="logo">`:initials;
+ $('#brandName').textContent=c.short||c.name;
+ $('#brandTag').textContent=c.tag||'PROJECT MANAGEMENT';
+ $('#brandMark').innerHTML=logoHTML;
+ $('#topCompany').textContent=c.name;
+ $('#topCompanySub').textContent=`${c.director} · WA ${c.wa}`;
+ $('#sideCompany').textContent=c.name;
+ $('#sideAddress').innerHTML=esc(c.address).replace(/\n/g,'<br>');
+ $('#sideDirector').textContent=c.director;
+ $('#sideWa').textContent=c.wa;
+ $('#footCompany').textContent=c.name;
+ $('#footAddress').textContent=c.address;
+ $('#footDirector').textContent=c.director;
+ $('#footWa').textContent=c.wa;
+ $('#footBrand').textContent=c.short||c.name;
+ const tb=$('#topbar');tb.dataset.company=c.name;
+ tb.dataset.companyDetail=`${c.address}  ·  Direktur Utama: ${c.director}  ·  WA: ${c.wa}`;
+ $('#loginBrandName').textContent=c.short||c.name;
+ $('#loginBrandTag').textContent=c.tag||'PROJECT MANAGEMENT';
+ $('#loginBrandMark').innerHTML=logoHTML;
+ $('#loginFooterBrand').textContent=c.short||c.name;
+}
+function printPDF(){if(page==='dashboard'||page==='field')drawCurve();setTimeout(()=>window.print(),150)}
+function setPage(p){
+ if((p==='admin'&&!can('admin'))||(p==='backup'&&!can('backup'))||(p==='company'&&!can('companyEdit'))){alert('Perlu hak akses.');return}
+ page=p;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===p));$('#sidebar').classList.remove('open');render()
+}
+function modal(title,html,fn){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=html;$('#modalSave').onclick=async()=>{if(await fn())closeModal()};$('#modalSave').textContent='Simpan Data';$('#modal').classList.add('show')}
+function closeModal(){$('#modal').classList.remove('show')}
+function val(id){return document.getElementById(id).value}
+function f(id,label,type='text',value='',extra=''){return `<div class="field"><label>${label}</label><input id="${id}" type="${type}" value="${esc(value)}" ${extra}></div>`}
+function sel(id,label,opts,value){return `<div class="field"><label>${label}</label><select id="${id}">${opts.map(o=>`<option ${o===value?'selected':''}>${esc(o)}</option>`).join('')}</select></div>`}
+function projectSelect(id='project',selected=activeProject){return `<div class="field"><label>Proyek</label><select id="${id}">${db.projects.map(p=>`<option value="${p.id}" ${p.id==selected?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div>`}
+
+function guardWrite(action,fn){if(!can(action)){alert('Tidak diizinkan.');return}fn()}
+function openProject(p={}){guardWrite(p.id?'edit':'create',()=>_openProject(p))}
+function _openProject(p={}){modal(p.id?'Edit Proyek':'Tambah Proyek',`<div class="formgrid">${f('name','Nama Proyek','text',p.name||'')}${f('client','Klien / Owner','text',p.client||'')}${f('location','Lokasi','text',p.location||'')}${f('budget','Nilai RAB (Rp)','number',p.budget||0)}${f('start','Tanggal Mulai','date',p.start||today)}${f('end','Tanggal Selesai','date',p.end||today)}${f('progress','Progres (%)','number',p.progress||0,'min="0" max="100"')}${sel('status','Status',['Persiapan','Berjalan','Tertunda','Selesai'],p.status||'Persiapan')}</div>`,async()=>{const payload={name:val('name'),client:val('client'),location:val('location'),budget:+val('budget'),start:val('start'),end:val('end'),progress:Math.max(0,Math.min(100,+val('progress')||0)),status:val('status')};if(!payload.name)return alert('Nama wajib.'),false;if(payload.end<payload.start)return alert('Tanggal tidak valid.'),false;try{if(p.id)await api('/projects/'+p.id,{method:'PUT',body:JSON.stringify(payload)});else{const r=await api('/projects',{method:'POST',body:JSON.stringify(payload)});activeProject=r.id}await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+function editProject(id){openProject(db.projects.find(x=>x.id===id))}
+function openTask(t={}){guardWrite(t.id?'edit':'create',()=>_openTask(t))}
+function _openTask(t={}){modal(t.id?'Edit Aktivitas':'Tambah Aktivitas WBS',`<div class="formgrid">${projectSelect('project',t.project||activeProject)}${f('name','Nama Aktivitas','text',t.name||'')}${f('start','Tanggal Mulai','date',t.start||today)}${f('end','Tanggal Selesai','date',t.end||today)}${f('weight','Bobot (%)','number',t.weight||0)}${f('progress','Progres (%)','number',t.progress||0)}${f('pred','Predecessor (ID)','text',t.pred||'')}${f('resource','Sumber Daya','text',t.resource||'')}${sel('critical','Jalur Kritis',['Tidak','Ya'],t.critical?'Ya':'Tidak')}</div>`,async()=>{const payload={project:+val('project'),name:val('name'),start:val('start'),end:val('end'),weight:+val('weight'),progress:Math.max(0,Math.min(100,+val('progress')||0)),pred:val('pred'),resource:val('resource'),critical:val('critical')==='Ya'?1:0};if(!payload.name)return alert('Nama wajib.'),false;try{if(t.id)await api('/tasks/'+t.id,{method:'PUT',body:JSON.stringify(payload)});else await api('/tasks',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+function editTask(id){openTask(db.tasks.find(x=>x.id===id))}
+function openCost(c={}){guardWrite(c.id?'edit':'create',()=>_openCost(c))}
+function _openCost(c={}){modal(c.id?'Edit Item RAB':'Tambah Item RAB / AHSP',`<div class="formgrid">${projectSelect('project',c.project||activeProject)}${f('item','Uraian Pekerjaan','text',c.item||'')}${f('volume','Volume','number',c.volume||1)}${f('unit','Satuan','text',c.unit||'ls')}${f('price','Harga Satuan (Rp)','number',c.price||0)}${f('actual','Biaya Aktual (Rp)','number',c.actual||0)}</div><div class="notice">Nilai RAB dihitung otomatis dari volume × harga satuan.</div>`,async()=>{const payload={project:+val('project'),item:val('item'),volume:+val('volume'),unit:val('unit'),price:+val('price'),actual:+val('actual')};if(!payload.item)return alert('Uraian wajib.'),false;try{if(c.id)await api('/costs/'+c.id,{method:'PUT',body:JSON.stringify(payload)});else await api('/costs',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+function editCost(id){openCost(db.costs.find(x=>x.id===id))}
+function openReport(){guardWrite('create',()=>_openReport())}
+function _openReport(){modal('Input Laporan Harian',`<div class="formgrid">${projectSelect()}${f('date','Tanggal','date',today)}${f('work','Uraian Pekerjaan','text','')}${f('workers','Tenaga Kerja','text','')}${f('material','Material Masuk','text','')}${sel('weather','Cuaca',['Cerah','Berawan','Hujan','Hujan Lebat'])}${f('progress','Progres Hari Ini (%)','number',0,'min="0" max="100"')}<div class="field"><label>Foto dokumentasi (opsional)</label><input id="photo" type="file" accept="image/*"></div><div class="field span2"><label>Catatan lapangan</label><textarea id="note"></textarea></div></div>`,async()=>{
+  const p=project(val('project'));
+  const payload={project:+val('project'),projectName:p?.name||'',date:val('date'),work:val('work'),workers:val('workers'),material:val('material'),weather:val('weather'),progress:Math.max(0,Math.min(100,+val('progress')||0)),note:val('note'),photo:''};
+  if(!payload.work.trim())return alert('Uraian wajib.'),false;
+  const file=$('#photo').files[0];
+  const doSave=async(photo)=>{
+    payload.photo=photo||'';
+    await api('/reports',{method:'POST',body:JSON.stringify(payload)});
+    if(p){ const np=Math.max(p.progress,payload.progress); await api('/projects/'+p.id,{method:'PUT',body:JSON.stringify({progress:np})}); }
+    await loadAll(); render(); return true;
+  };
+  try{
+    if(file){
+      if(file.size>1200000)return alert('Foto terlalu besar (≤1.2 MB).'),false;
+      return new Promise(res=>{const rd=new FileReader();rd.onload=async()=>{try{await doSave(rd.result);closeModal();res(true)}catch(e){alert(e.message);res(false)}};rd.onerror=()=>{alert('Gagal baca foto');res(false)};rd.readAsDataURL(file)});
+    } else { const ok=await doSave(''); closeModal(); return ok; }
+  }catch(e){ alert(e.message); return false; }
+})}
+function openDoc(){guardWrite('create',()=>_openDoc())}
+function _openDoc(){modal('Tambah Register Dokumen',`<div class="formgrid">${projectSelect()}${f('title','Judul Dokumen','text','')}${f('number','Nomor Dokumen','text','')}${sel('category','Kategori',['Kontrak','Shop Drawing','As-Built Drawing','Izin','Berita Acara','Lainnya'])}${f('version','Versi','number',1)}${f('date','Tanggal','date',today)}${f('owner','Penanggung Jawab','text','')}${sel('status','Status',['Draft','Menunggu','Disetujui','Revisi','Ditolak'])}</div>`,async()=>{const payload={project:+val('project'),title:val('title'),number:val('number'),category:val('category'),version:+val('version'),date:val('date'),owner:val('owner'),status:val('status')};try{await api('/docs',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+function openApproval(){if(!can('approve'))return alert('Tidak diizinkan.');modal('Pengajuan Approval',`<div class="formgrid">${f('title','Judul Pengajuan','text','')}${sel('step','Tahap',['Kontraktor','Konsultan MK','Owner'])}${f('date','Tanggal','date',today)}${sel('status','Status',['Menunggu','Disetujui','Revisi','Ditolak'])}</div>`,async()=>{const payload={title:val('title'),step:val('step'),date:val('date'),status:val('status')};try{await api('/approvals',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+function openIssue(){guardWrite('create',()=>_openIssue())}
+function _openIssue(){modal('Catat Isu Proyek',`<div class="formgrid">${projectSelect()}${f('title','Judul Isu','text','')}${sel('priority','Prioritas',['Rendah','Sedang','Tinggi','Kritis'])}${f('pic','PIC','text','')}${f('due','Target','date',today)}${sel('status','Status',['Terbuka','Dalam Proses','Menunggu','Selesai'])}<div class="field span2"><label>Deskripsi</label><textarea id="detail"></textarea></div></div>`,async()=>{const payload={project:+val('project'),title:val('title'),priority:val('priority'),pic:val('pic'),due:val('due'),status:val('status'),detail:val('detail')};try{await api('/issues',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+async function cycleIssue(id){
+ if(!can('edit'))return alert('Tidak diizinkan.');
+ const x=db.issues.find(i=>i.id===id),s=['Terbuka','Dalam Proses','Menunggu','Selesai'];
+ const next=s[(s.indexOf(x.status)+1)%s.length];
+ try{ await api('/issues/'+id,{method:'PUT',body:JSON.stringify({status:next})}); await loadAll(); render(); }
+ catch(e){ alert(e.message); }
+}
+function openResource(){guardWrite('create',()=>_openResource())}
+function _openResource(){modal('Tambah Sumber Daya',`<div class="formgrid">${f('name','Nama','text','')}${sel('type','Jenis',['Tenaga Kerja','Alat','Sub-kontraktor','Lainnya'])}${f('capacity','Kapasitas','number',1)}${f('unit','Satuan','text','orang')}</div>`,async()=>{const payload={name:val('name'),type:val('type'),capacity:+val('capacity'),unit:val('unit')};try{await api('/resources',{method:'POST',body:JSON.stringify(payload)});await loadAll();render();return true}catch(e){alert(e.message);return false}})}
+async function del(key,id){
+ if(!can('delete'))return alert('Tidak diizinkan.');
+ if(!confirm('Hapus data ini?'))return;
+ try{ await api('/'+key+'/'+id,{method:'DELETE'}); await loadAll(); render(); }
+ catch(e){ alert(e.message); }
+}
+function exportCSV(key){let arr=db[key]||[];if(!arr.length)return alert('Tidak ada data untuk diekspor.');let cols=Object.keys(arr[0]),csv=[cols.join(';'),...arr.map(o=>cols.map(k=>'"'+String(o[k]??'').replace(/"/g,'""')+'"').join(';'))].join('\n');let a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'}));a.download='puguh-konstruksi-'+key+'.csv';a.click();URL.revokeObjectURL(a.href)}
+function filterTable(id,q){document.querySelectorAll('#'+id+' tbody tr').forEach(tr=>tr.style.display=tr.innerText.toLowerCase().includes(q.toLowerCase())?'':'none')}
+function filterStatus(s,id){document.querySelectorAll('#'+id+' tbody tr').forEach(tr=>tr.style.display=!s||tr.innerText.includes(s)?'':'none')}
+
+function drawCurve(){let c=$('#curve');if(!c)return;let ctx=c.getContext('2d'),w=c.clientWidth||600,h=c.clientHeight||230,dpr=window.devicePixelRatio||1;c.width=w*dpr;c.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);let pad={l:42,r:15,t:15,b:30},cw=w-pad.l-pad.r,ch=h-pad.t-pad.b;ctx.strokeStyle='#e8edf2';ctx.fillStyle='#7c8b98';ctx.font='10px Arial';for(let i=0;i<=4;i++){let y=pad.t+ch*i/4;ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();ctx.fillText((100-i*25)+'%',5,y+3)}let actual=db.projects.length?db.projects.reduce((a,p)=>a+p.progress,0)/db.projects.length:0;let plan=[0,12,25,42,58,73,88,100],act=[0,Math.max(0,actual*.12),Math.max(0,actual*.35),actual*.68,actual];function line(vals,color){ctx.beginPath();vals.forEach((v,i)=>{let x=pad.l+cw*i/(vals.length-1),y=pad.t+ch*(1-v/100);i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.stroke();vals.forEach((v,i)=>{ctx.beginPath();ctx.arc(pad.l+cw*i/(vals.length-1),pad.t+ch*(1-v/100),3,0,Math.PI*2);ctx.fillStyle=color;ctx.fill()})}line(plan,'#2878b8');line(act,'#0f9d91');ctx.fillStyle='#718096';['Awal','Bln 1','Bln 2','Bln 3','Bln 4','Bln 5','Bln 6','Akhir'].forEach((v,i)=>ctx.fillText(v,pad.l+cw*i/7-10,h-7));ctx.fillStyle='#2878b8';ctx.fillRect(w-145,8,9,3);ctx.fillStyle='#718096';ctx.fillText('Rencana',w-132,13);ctx.fillStyle='#0f9d91';ctx.fillRect(w-75,8,9,3);ctx.fillStyle='#718096';ctx.fillText('Aktual',w-62,13)}
+window.addEventListener('resize',()=>{if(page==='dashboard'||page==='field')drawCurve()})
+
+document.addEventListener('DOMContentLoaded',async()=>{
+ $('#today').textContent=new Date().toLocaleDateString('id-ID',{weekday:'short',day:'2-digit',month:'short',year:'numeric'});
+ document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>setPage(b.dataset.page));
+ $('#menuBtn').onclick=()=>$('#sidebar').classList.toggle('open');
+ loadSession();
+ try{ company=await api('/company'); }catch(e){}
+ if(TOKEN){
+  try{
+    const me=await api('/auth/me');
+    session={userId:me.user.id,role:me.user.role,name:me.user.name,loginAt:new Date().toISOString()};
+    saveSession();
+    await loadAll();
+    enterApp();
+    return;
+  }catch{ TOKEN=''; localStorage.removeItem('puguhToken'); }
+ }
+ applyCompany();
+ $('#loginPage').style.display='flex';
+ $('#appRoot').style.display='none';
+});
+</script>
+</body>
+</html>
